@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --color-green-forest: #4A5D3F;
+  --color-orange-warm: #FF8B5A;
+  --color-green-soft: #A8D5BA;
+  --color-beige-light: #F5F1E8;
+  --color-dark: #2C2C2C;
+  --color-gray-light: #6B6B6B;
+  --color-gray-muted: #B8C5B3;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: var(--color-dark);
+  background: white;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.toast-stack {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.toast {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 12px;
+  padding: 11px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: #0f172a;
+  min-width: 240px;
+  max-width: 340px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+  animation: toastIn .32s cubic-bezier(.34,1.56,.64,1) forwards;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+@keyframes toastIn {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+.toast.t-jade { border-left: 3px solid #0f766e; }
+.toast.t-rose { border-left: 3px solid #e11d48; }
+.toast.t-sky { border-left: 3px solid #0284c7; }
+.toast.t-gold { border-left: 3px solid #d97706; }
+.toast-ico { font-size: .9rem; flex-shrink: 0; }
+
+/* 이미지 로딩 플레이스홀더 애니메이션 */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
